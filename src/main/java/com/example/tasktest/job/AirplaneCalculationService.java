@@ -35,7 +35,6 @@ public class AirplaneCalculationService {
       System.out.println("Airplane id: " + a.getId() + " flights finished: " + finishedFlights.size() +
               " total time: " + finishedFlights.stream().mapToDouble(Flight::getLength).sum() + "s");
     });
-    System.out.println(onFlight);
   }
 
   @Scheduled(fixedRate = 1000)
@@ -78,7 +77,6 @@ public class AirplaneCalculationService {
       TemporaryPoint newPosition = calculateNewPosition(currentPosition,
               avgSpeed, airplane.getCharacteristics().getMaxVerticalSpeed(), targetCourse, newCourse);
 
-      System.out.println(newPosition);
       temporaryPointRepository.save(newPosition);
 
       airplane.setPosition(newPosition);
